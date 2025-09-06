@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# This script sets up the Emacs configuration in a new sandbox.
+
+# ---- USER CONFIGURATION ----
+# REPLACE with the URL of your Emacs configuration repository
+YOUR_REPO_URL="<YOUR_REPO_URL>"
+
+# REPLACE with the name of your repository directory
+YOUR_REPO_NAME="<YOUR_REPO_NAME>"
+# ----------------------------
+
+# Step 1: Remove any existing Emacs config
+echo "Removing any existing Emacs configuration..."
+rm -rf ~/.emacs.d
+
+# Step 2: Clone your Emacs configuration repository
+echo "Cloning your Emacs configuration from Git..."
+git clone "$YOUR_REPO_URL" "$YOUR_REPO_NAME"
+
+# Step 3: Create the symbolic link
+echo "Creating symbolic link to connect your config..."
+ln -s "$HOME/$YOUR_REPO_NAME" ~/.emacs.d
+
+echo "Emacs configuration setup complete. You can now start Emacs."
